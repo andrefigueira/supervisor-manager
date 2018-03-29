@@ -19,6 +19,10 @@ pre {
   @include border-radius(5px);
 }
 
+v-cloak {
+  display: none!important;
+}
+
 .table-border-top-0 {
   tr {
     th {

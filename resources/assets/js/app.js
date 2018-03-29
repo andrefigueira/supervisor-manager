@@ -11,8 +11,10 @@ window.Vue = require('vue');
 
 import Vue from 'vue';
 import VueSweetalert2 from 'vue-sweetalert2';
+import VueModal from 'vue-js-modal'
 
 Vue.use(VueSweetalert2);
+Vue.use(VueModal);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -22,6 +24,10 @@ Vue.use(VueSweetalert2);
 
 const app = new Vue({
     el: '#app',
+    data: {
+        servers: [],
+        programs: []
+    },
     methods: {
         confirmAndRedirect(event) {
             let confirm = event.target.getAttribute('data-confirm');
@@ -65,6 +71,20 @@ const app = new Vue({
                 } else {
                     throw dismiss;
                 }
+            });
+        },
+        showServers() {
+            axios.get('/api/servers').then(response => {
+                this.servers = response.data;
+
+                this.$modal.show('show-servers');
+            });
+        },
+        showPrograms() {
+            axios.get('/api/programs').then(response => {
+                this.programs = response.data;
+
+                this.$modal.show('show-programs');
             });
         }
     },
