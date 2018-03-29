@@ -32,4 +32,10 @@ Route::post('/servers/store', 'ServersController@store');
 Route::delete('/servers/{id}', 'ServersController@destroy');
 
 Route::get('/programs', 'ProgramsController@index');
+Route::get('/programs/create', 'ProgramsController@create');
+Route::get('/programs/{id}/edit', 'ProgramsController@edit');
+Route::post('/programs/{id}/save', 'ProgramsController@save');
+Route::post('/programs/store', 'ProgramsController@store');
+Route::delete('/programs/{id}', 'ProgramsController@destroy');
+
 Route::get('/settings', 'SettingsController@index');
